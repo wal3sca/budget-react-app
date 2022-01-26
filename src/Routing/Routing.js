@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "/Users/walescaambroise/Documents/Pursuit/8.0/module-4/budget-app-react-front-end/src/Pages/Home.js";
+import Home from "../Components/Home.js";
 import Index from "../Pages/Index";
 // import Show from "../pages/Show";
 // import Edit from "../pages/Edit";

@@ -1,8 +1,6 @@
 import React from "react";
 
 const Nav = () => {
-  //   const history = useHistory();
-
   return (
     <div>
       <h1>Budget App</h1>
