@@ -18,7 +18,7 @@ const Transactions = () => {
         setTransactions(res.data);
       })
       .catch((error) => console.error(`Error: ${error}`));
-  }, []);
+  }, [URL]);
 
   //   make transaction component to return all data
   //   how to display info from an array of objects using .map
