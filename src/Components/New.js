@@ -14,7 +14,7 @@ const New = () => {
 
   const handleSubmit = () => {
     axios
-      .post(`${URL}transactions`, transactions)
+      .post(`${URL}/transactions`, transactions)
       .then((res) => {
         console.log(res);
       })
