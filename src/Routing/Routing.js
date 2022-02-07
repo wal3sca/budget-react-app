@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "../Components/Home.js";
 import Index from "../Pages/Index";
-// import Show from "../pages/Show";
-// import Edit from "../pages/Edit";
+import Show from "../Pages/Show";
+import Edit from "../Pages/Edit";
 import New from "../Components/New";
 
 const Routing = () => {
@@ -10,8 +10,8 @@ const Routing = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/transactions" element={<Index />} />
-      {/* <Route path="/transactions/:index" element={<Show />} /> */}
-      {/* <Route path="/transactions/:index/edit" element={<Edit />} /> */}
+      <Route path="/transactions/:index" element={<Show />} />
+      <Route path="/transactions/:index/edit" element={<Edit />} />
       <Route path="/transactions/new" element={<New />} />
     </Routes>
   );

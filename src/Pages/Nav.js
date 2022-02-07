@@ -1,12 +1,15 @@
+import "../Pages/home.css";
 import React from "react";
 
 const Nav = () => {
   return (
     <div>
-      <h1>Budget App</h1>
-      <h3>
-        <a href="/transactions/new">New Transaction</a>
-      </h3>
+      <h1 className="header">
+        Budget App
+        <button variant="outline-dark">
+          <a href="/transactions/new">New Transaction</a>
+        </button>
+      </h1>
     </div>
   );
 };

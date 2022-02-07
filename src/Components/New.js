@@ -14,7 +14,7 @@ const New = () => {
 
   const handleSubmit = () => {
     axios
-      .post(`${URL}/transactions`, transactions)
+      .post(`${URL}transactions`, transactions)
       .then((res) => {
         console.log(res);
       })
@@ -26,7 +26,7 @@ const New = () => {
     setTransactions({ ...transactions, [name]: value });
   };
   return (
-    <div>
+    <div className="New">
       <div className="input-ctn">
         <label>
           Date:
@@ -66,7 +66,7 @@ const New = () => {
         </label>
         <button type="submit" onClick={() => handleSubmit()}>
           {" "}
-          Create New Item
+          Submit New Transaction
         </button>
       </div>
     </div>
