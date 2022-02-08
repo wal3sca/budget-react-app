@@ -5,7 +5,7 @@ const Nav = () => {
   return (
     <div>
       <h1 className="header">
-        Budget App
+        <a href="/">Budget App</a>
         <button variant="outline-dark">
           <a href="/transactions/new">New Transaction</a>
         </button>

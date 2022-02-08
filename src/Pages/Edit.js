@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Edit = () => {
   const { index } = useParams();
+  let navigate = useNavigate();
   const [edit, setEdit] = useState({
     date: "",
     name: "",
@@ -12,6 +13,11 @@ const Edit = () => {
   });
 
   const URL = process.env.REACT_APP_API_URL;
+
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    setEdit({ ...edit, [name]: value });
+  };
 
   useEffect(() => {
     axios
@@ -24,67 +30,53 @@ const Edit = () => {
       .catch((error) => console.error(`Error: ${error}`));
   });
 
-  const handleSubmit =
-    (() => {
-      axios
-        .put(`${URL}/transactions/${index}`, edit)
-        .then((res) => {
-          console.log(res);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios
+      .put(`${URL}/transactions/${index}`, edit)
+      .then(() => navigate(`/transactions/${index}`));
 
-          setEdit(res.data);
-        })
-        .catch((error) => console.error(`Error: ${error}`));
-    },
-    [URL]);
-
-  const handleOnChange = (e) => {
-    const { name, value } = e.target;
-    setEdit({ ...edit, [name]: value });
+    // .catch((error) => console.error(`Error: ${error}`));
   };
   return (
-    <div>
-      <div className="input-ctn">
-        <label>
-          Date:
+    <div className="Edit">
+      <form className="budget-edit-form" onSubmit={handleSubmit}>
+        <div className="input-ctn">
+          <label htmlFor="date">Date:</label>
           <input
+            id="date"
             onChange={(e) => handleOnChange(e)}
             type="date"
             name="date"
             required
           />
-        </label>
-        <label>
-          Name:
+          <label htmlFor="name">Name:</label>
           <input
+            id="name"
             onChange={(e) => handleOnChange(e)}
             type="text"
             name="name"
             required
           />
-        </label>
-        <label>
-          Amount:
+          <label htmlFor="amount">Amount:</label>
           <input
+            id="amount"
             onChange={(e) => handleOnChange(e)}
             type="number"
             name="amount"
             required
           />
-        </label>
-        <label>
-          From:
+          <label htmlFor="from">From:</label>
           <input
+            id="from"
             onChange={(e) => handleOnChange(e)}
             type="text"
             name=" from"
             required
           />
-        </label>
-        <button type="submit" onClick={() => handleSubmit()}>
-          {" "}
-          Create New Item
-        </button>
-      </div>
+          <input className="edit-submit-btn" type="submit" />
+        </div>
+      </form>
     </div>
   );
 };

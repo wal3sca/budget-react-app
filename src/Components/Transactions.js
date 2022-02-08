@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Transactions = () => {
   const [transactions, setTransactions] = useState([]);
@@ -25,16 +26,17 @@ const Transactions = () => {
 
   return (
     <div>
-      {transactions.map((transaction) => {
+      {transactions.map((transaction, index) => {
         return (
-          <div>
+          <div key={index}>
             <p>{`
             Amount: ${transaction.amount}
-            Category: ${transaction.category}
             Date: ${transaction.date}
             From: ${transaction.from}
             Source: ${transaction.source}
             `}</p>
+            <Link to={`/transactions/${index}`}>Details</Link>
+            <Link to="/transactions/:index/edit">Edit</Link>
           </div>
         );
       })}
